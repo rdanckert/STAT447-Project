@@ -1,0 +1,31 @@
+---
+title: "Project Proposal"
+author: "Ranen Oomen-Danckert"
+date: "15/03/2024"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+For my project, which I will be working on individually, I would like to compare Bayesian regression or Classification and Frequentist Regression or Classification on a wine quality data set. My Github repo is here https://github.com/rdanckert/STAT447-Project. The first potential dataset is for Spanish wines from Kaggle, it has a response variable which is a rating from 4 to 5, and potential predictors acidity, body, grape varietal, price, region, and number of reviews.
+
+```{r message = FALSE}
+spain_wine_ratings <- read_csv("C:/Users/ranen/Downloads/wines_SPA.csv")
+```
+```{r}
+head(spain_wine_ratings, n = 3)
+```
+The second potential dataset is also from Kaggle, this dataset doesn't restrict its wines to spain and has more scientific potential predictor variables, like residual sugar and pH level.
+
+```{r message = FALSE}
+wine_quality <- read_csv("C:/Users/ranen/Downloads/WineQT.csv")
+```
+
+```{r}
+head(wine_quality, n = 3)
+```
+
+This project interests me because I want to improve my understanding of what makes different wines higher quality. I could compare Lasso regularization or variable selection methods and a Bayesian approach to determine if predictor coefficients are non-zero.
