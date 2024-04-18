@@ -1,5 +1,5 @@
 ---
-title: "Project Report"
+title: "Assessing the importance of a wine's characteristics to its quality using Bayesian methods"
 author: "Ranen Oomen-Danckert"
 date: "19/04/2024"
 output: pdf_document
