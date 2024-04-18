@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Problem Context
 
-When performing technical wine evaluations, the taster aims to roughly quantify different aspects of a wine such as a wine's body, sweetness, acidity, and bitterness. While roughly quantifying these different characteristics is not extremely difficult after some training it is unclear if there is a clear correlation between these characteristics and a wine's quality.
+When performing technical wine evaluations, the taster aims to roughly quantify different aspects of a wine such as a wine's body, sweetness, acidity, and bitterness. While roughly quantifying these different characteristics is not extremely difficult after some training it is unclear if there is a clear correlation between these characteristics and a wine's quality. All code used to create this project is available in the appendix, as well as on Github at this [link](https://github.com/rdanckert/STAT447-Project)
 
 ## Inference Task
 
