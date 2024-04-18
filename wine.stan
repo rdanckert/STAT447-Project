@@ -37,4 +37,5 @@ generated quantities {
   vector[N_valid] quality_pred;
   for (i in 1:N_valid)
     quality_pred[i] = normal_rng(body_pred[i]*b1 + acidity_pred[i]*b2 + price_pred[i]*b3 + intercept, sigma);
+    
 }

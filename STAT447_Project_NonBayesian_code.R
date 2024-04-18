@@ -35,7 +35,7 @@ spain_wine_ratings <- spain_wine_ratings %>%
   mutate(price = (price - price_mean)/price_sd) 
 
 
-
+## glmnet takes matrices as input
 
 X <- as.matrix(spain_wine_ratings)
 y <- as.matrix(rating)
@@ -50,13 +50,6 @@ plot(cvfit)
 
 coef(cvfit, s = cvfit$lambda.1se)
 coef(cvfit, s = cvfit$lambda.min)
-
-## Pre-processing for STAN
-
-body_vec <- spain_wine_ratings$body
-acidity_vec <- spain_wine_ratings$acidity
-price_vec <- spain_wine_ratings$price
-rating_vec <- spain_wine_ratings$rating
 
 ## Forward variable selection
 

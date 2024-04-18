@@ -1,4 +1,4 @@
-suppressPakcageStartupMessages(require(tidyverse))
+suppressPackageStartupMessages(require(tidyverse))
 
 spain_wine_ratings <- read_csv("C:/Users/ranen/Downloads/wines_SPA.csv")
 
@@ -201,3 +201,34 @@ ggplot() +
   geom_point(aes(x = seq(1,25), y = calibration_tib$`upper bound`[1:25]), colour = "blue") +
   labs(y = "rating",x = "") +
   theme_minimal()
+
+## Fit to all data
+
+full_fit <- stan(
+  "wine.stan", 
+  seed = 1,
+  data = list(
+    y = rating_vec,
+    body = body_vec,
+    acidity = acidity_vec,
+    price = price_vec,
+    N = length(rating_vec),
+    N_valid = length(body_vec),
+    body_pred = body_vec,
+    acidity_pred = acidity_vec,
+    price_pred = price_vec
+  ), 
+  chains = 2,
+  iter = 10000      
+)
+
+full_quantiles <- summary(full_fit)$summary
+preds <- full_quantiles[,"mean"]
+preds <- preds[6:6334]
+
+## Bayes prediction mean MSE
+stopifnot(length(preds)==length(rating_vec))
+
+bayes_mse = sum((rating_vec - preds)**2)/length(preds)
+  
+  
