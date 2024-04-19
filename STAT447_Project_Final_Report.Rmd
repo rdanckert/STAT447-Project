@@ -1,5 +1,5 @@
 ---
-title: "Assessing the importance of a wine's characteristics to its quality using Bayesian methods"
+title: "Assessing the importance of a wine's characteristics to its quality using Bayesian linear regression"
 author: "Ranen Oomen-Danckert"
 date: "19/04/2024"
 output: pdf_document
@@ -56,7 +56,7 @@ These prior predictive plots seem much more reasonable while maintaining suffici
 We now estimate our posterior distributions for our body, acidity, and price slopes by running Markov chain Monte Carlo (MCMC) using STAN. We use 2 chains for 10000 iterations and examine the trace and rank plots to ensure the chains mix well. The trace and rank plots for the body, acidity, and price slopes are shown below. \newline 
 ![](mcmc_trace.png){width=30%} ![](mcmc_trace_acidity.png){width=30%} ![](mcmc_trace_price.png){width=30%}\newline![](rank_body.png){width=30%} ![](rank_acidity.png){width=30%} ![](rank_price.png){width=30%} \newline The trace plots for all three predictors show that the chains are mixing well and all of the rank plots are well balanced so it appears that slow mixing is not a problem for our MCMC algorithm.
 
-We now perform our posterior predictive check. To do this we use a validation set that is roughly 10% of our data and generate predictions for this validation set in our MCMC algorithm. We find that the actual coverage of our 95% credible interval for the validation set of 632 observations is 100%, so our credible interval is over-conservative. A plot of the first 25 observations and their corresponding intervals is shown below. \newline ![](mcmc_credible.png){width=30%} The mean of the predictions from our Bayesian model yielded a mean squared prediction error of 0.0106.
+We now perform our posterior predictive check. To do this we use a validation set that is roughly 10% of our data and generate predictions for this validation set in our MCMC algorithm. We find that the actual coverage of our 95% credible interval for the validation set of 632 observations is 100%, so our credible interval is over-conservative. A plot of the first 25 observations and their corresponding intervals is shown below, it is clear from this plot that our intervals are over-conservative. \newline ![](mcmc_credible.png){width=30%} \newline The mean of the predictions from our Bayesian model yielded a mean squared prediction error of 0.0106.
 
 ## Discussion
 
@@ -66,7 +66,7 @@ With respect to the importance of body, acidity, and price, our MCMC algorithm r
 ## Appendix
 
 ## STAN Code
-```{stan output.var = "wine"}
+```{stan output.var = "wine", eval=FALSE}
 
 
 // The input data is a vector 'y' of length 'N'.
